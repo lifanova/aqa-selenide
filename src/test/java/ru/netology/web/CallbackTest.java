@@ -1,0 +1,55 @@
+package ru.netology.web;
+
+import com.codeborne.selenide.SelenideElement;
+import org.junit.jupiter.api.Test;
+
+import static com.codeborne.selenide.Condition.exactText;
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.open;
+
+public class CallbackTest {
+    @Test
+    void correctlyTest() {
+        open("http://localhost:9999");
+        SelenideElement form = $(".form");
+        form.$("[data-test-id=name] input").setValue("Иванов Иван");
+        form.$("[data-test-id=phone] input").setValue("+79101234567");
+        form.$("[data-test-id=agreement]").click();
+        form.$(".button").click();
+        $(".Success_successBlock__2L3Cw").shouldHave(exactText("Ваша заявка успешно отправлена!"));
+    }
+
+    @Test
+    void correctlyTestV2() {
+        open("http://localhost:9999");
+        SelenideElement form = $(".form");
+        form.$("[data-test-id=name] input").setValue("Иванов Иван");
+        form.$("[data-test-id=phone] input").setValue("+79101234567");
+        form.$(".checkbox__box").click();
+        form.$(".button").click();
+        $("[data-test-id=order-success]").shouldHave(exactText("Ваша заявка успешно отправлена!"));
+    }
+
+    @Test
+    void checkNameTest() {
+        open("http://localhost:9999");
+        SelenideElement form = $(".form");
+        form.$("[data-test-id=name] input").setValue("Ivanov Ivan");
+        form.$("[data-test-id=phone] input").setValue("+79101234567");
+        form.$("[data-test-id=agreement]").click();
+        form.$(".button").click();
+        $(".input__sub").shouldHave(exactText("Имя и Фамилия указаны неверно! Разрешены только русские буквы, дефисы и пробелы"));
+    }
+
+    @Test
+    void checkPhoneNumberTest() {
+        open("http://localhost:9999");
+        SelenideElement form = $(".form");
+        form.$("[data-test-id=name] input").setValue("Иванов Иван");
+        form.$("[data-test-id=phone] input").setValue("+76753738");
+        form.$("[data-test-id=agreement]").click();
+        form.$(".button").click();
+        $("[data-test-id=\"phone\"] .input__sub").shouldHave(exactText("Телефон указан неверно! Только цифры (11 цифр), символ + (на первом месте)"));
+    }
+
+}
