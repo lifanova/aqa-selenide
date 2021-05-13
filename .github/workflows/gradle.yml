@@ -25,11 +25,7 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v2
-      - name: Setup Java version
-        uses: actions/setup-java@v2
-          with:
-            java-version: 11
-
+      
       - name: Build and run tests
         run: |
           chmod +x gradlew
