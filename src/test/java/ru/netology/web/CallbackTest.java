@@ -30,7 +30,7 @@ public class CallbackTest {
         $("[data-test-id=order-success]").shouldHave(exactText("Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время."));
     }
 
-    /*@Test
+    @Test
     void checkNameTest() {
         open("http://localhost:9999");
         SelenideElement form = $(".form");
@@ -39,9 +39,9 @@ public class CallbackTest {
         form.$("[data-test-id=agreement]").click();
         form.$(".button").click();
         $(".input__sub").shouldHave(exactText("Имя и Фамилия указаны неверно! Разрешены только русские буквы, дефисы и пробелы"));
-    }*/
+    }
 
-    /*@Test
+    @Test
     void checkPhoneNumberTest() {
         open("http://localhost:9999");
         SelenideElement form = $(".form");
@@ -50,6 +50,6 @@ public class CallbackTest {
         form.$("[data-test-id=agreement]").click();
         form.$(".button").click();
         $("[data-test-id=\"phone\"] .input__sub").shouldHave(exactText("Телефон указан неверно! Только цифры (11 цифр), символ + (на первом месте)"));
-    }*/
+    }
 
 }
