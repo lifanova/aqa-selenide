@@ -14,7 +14,7 @@ jobs:
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
-          java -version
+          java -jar ${{ github.workspace }}/artifacts/app-order.jar
           echo "Sleeping for 10"
           sleep 10
 
