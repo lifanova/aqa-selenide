@@ -16,7 +16,7 @@ public class CallbackTest {
         form.$("[data-test-id=phone] input").setValue("+79101234567");
         form.$("[data-test-id=agreement]").click();
         form.$(".button").click();
-        $(".Success_successBlock__2L3Cw").shouldHave(exactText("Ваша заявка успешно отправлена!"));
+        $(".Success_successBlock__2L3Cw").shouldHave(exactText("Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время."));
     }
 
     @Test
@@ -27,7 +27,7 @@ public class CallbackTest {
         form.$("[data-test-id=phone] input").setValue("+79101234567");
         form.$(".checkbox__box").click();
         form.$(".button").click();
-        $("[data-test-id=order-success]").shouldHave(exactText("Ваша заявка успешно отправлена!"));
+        $("[data-test-id=order-success]").shouldHave(exactText("Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время."));
     }
 
     /*@Test
