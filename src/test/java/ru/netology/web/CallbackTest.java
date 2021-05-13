@@ -38,7 +38,7 @@ public class CallbackTest {
         form.$("[data-test-id=phone] input").setValue("+79101234567");
         form.$("[data-test-id=agreement]").click();
         form.$(".button").click();
-        $(".input__sub").shouldHave(exactText("Имя и Фамилия указаны неверно. Допустимы только русские буквы, пробелы и дефисы."));
+        $(".input__sub").shouldHave(exactText("Имя и Фамилия указаные неверно. Допустимы только русские буквы, пробелы и дефисы."));
     }
 
     @Test
