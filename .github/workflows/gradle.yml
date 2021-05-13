@@ -14,7 +14,6 @@ jobs:
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
-          java -jar ${{ github.workspace }}/artifacts/app-order.jar &
           echo "Sleeping for 10"
           sleep 10
 
@@ -25,9 +24,12 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v2
-      
+
       - name: Build and run tests
         run: |
+          java -jar ${{ github.workspace }}/artifacts/app-order.jar &
+          echo "Sleeping for 10"
+          sleep 50
           chmod +x gradlew
           ./gradlew test --info -Dselenide.headless=true
 
