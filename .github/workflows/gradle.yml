@@ -2,10 +2,20 @@ name: Java CI with Gradle
 
 on: [push]
 
-
 jobs:
-  build:
+  job1:
+    name: Job 1
+    runs-on: ubuntu-latest
 
+    steps:
+      - name: Run and Sleep
+        run: |
+      java -jar ./artifacts/app-mbank.jar &
+      echo "Sleeping for 10"
+      sleep 10
+
+  build:
+    name: Build
     runs-on: ubuntu-latest
 
     steps:
@@ -14,7 +24,7 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 11
-        
+
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
       - name: Build with Gradle
